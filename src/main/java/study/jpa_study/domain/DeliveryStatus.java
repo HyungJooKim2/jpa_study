@@ -1,4 +1,5 @@
 package study.jpa_study.domain;
 
-public class DeliveryStatus {
+public enum DeliveryStatus {
+    READY, COMP
 }

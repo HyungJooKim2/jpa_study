@@ -13,12 +13,12 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
 
     @Embedded
     private Address address;
 
-//    @Enumerated(EnumType.STRING)   //이상한 값이 들어와도... STRING 으로
-//    private DeliveryStatus status; //READY, XXX, COMP
+    @Enumerated(EnumType.STRING)   //이상한 값이 들어와도... STRING 으로
+    private DeliveryStatus status; //READY, XXX, COMP
 }
