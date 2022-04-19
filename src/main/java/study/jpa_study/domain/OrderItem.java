@@ -1,6 +1,8 @@
 package study.jpa_study.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import study.jpa_study.domain.item.Item;
 
@@ -8,7 +10,13 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
+    /*
+     @NoArgsConstructor(access = AccessLevel.PROTECTED)
+     둘다 new로 생성하는것을 막아준다. new OrderItem();
+     protected OrderItem(){}
+     */
 
     @Id @GeneratedValue
     @Column(name = "order_item_id")
@@ -25,14 +33,16 @@ public class OrderItem {
     private int orderPrice; //주문 가격
 
     private int count; //주문 수량
+
     //==생성 메서드==//
+    //할인이 있거나 할 경우를 생각해 orderPrice를 새로 받는다.
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
 
-        item.removeStock(count);
+        item.removeStock(count);   //아이템 제고 줄어들게
         return orderItem;
     }
 
