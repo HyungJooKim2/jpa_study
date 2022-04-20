@@ -6,7 +6,7 @@ spring:
     password: ''
   jpa:
     hibernate:
-      ddl-auto: create # Re-create at the time the application runs
+      ddl-auto: create # create :  Re-create at the time the application runs
     properties:
       hibernate:
         #show_sql: true Output from systemout / In a production environment, logs should be taken through a logger
@@ -15,7 +15,7 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug  #You can see all the sql that hibernate produces. Output via logger
-    org.hibernate.type: trace #You can see type of values
+    #org.hibernate.type: trace #You can see type of values p6py
 
 server:
   port: 8035
